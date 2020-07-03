@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="referrer" content="no-referrer">
+    <meta charset="utf-8">
+
+
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>相似电影推荐</title>
+
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="../../../../">
+    <link rel="shortcut icon" href="../../../../">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/jquery-migrate-1.1.1.js"></script>
+    <script src="../static/js/jquery.easing.1.3.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/superfish.js"></script>
+    <script src="../static/js/jquery.equalheights.js"></script>
+    <script src="../static/js/jquery.mobilemenu.js"></script>
+    <script src="../static/js/tmStickUp.js"></script>
+    <script src="../static/js/jquery.ui.totop.js"></script>
+    <script src="../static/js/jquery.shuffle-images.js"></script>
+    <script>
+ $(window).load(function(){
+  $().UItoTop({ easingType: 'easeOutQuart' });
+  $('#stuck_container').tmStickUp({}); 
+    $('.gallery .gall_item').touchTouch();
+ });
+
+
+    </script>
+    <!--<script type="text/jscript">-->
+<!--function compute(){-->
+
+<!--document.getElementById("similarinput").value={{similar_name}};-->
+<!--}-->
+
+    <!--</script>-->
+</head>
+<body>
+<!--==============================
+              header
+=================================-->
+<header>
+    <div class="header_top">
+        <div class="container">
+            <div class="row">
+                <div class="grid_12">
+                    <h1><a href="">电影推荐系统 </a></h1>
+                    Film Recommendation System
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="stuck_container">
+        <!--==============================
+                    Stuck menu
+        =================================-->
+        <div class="container">
+            <div class="row">
+                <div class="grid_12 ">
+                    <h1 class="logo">
+                        <a href="">
+                            Movie.Folio
+                        </a>
+                    </h1>
+                    <div class="navigation ">
+                        <nav>
+                            <ul class="sf-menu">
+                                <li ><a href="home">主页</a></li>
+                                <li><a href="rank">热门电影推荐</a></li>
+                                <li class="current"><a href="similar">相似电影推荐</a></li>
+                                <li><a href="guess">猜我喜欢</a></li>
+                                <li><a href="choice1">选电影</a></li>
+                            </ul>
+                        </nav>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+<!--=====================
+          Content
+======================-->
+<div style="width:100%;text-align:center;left:20px;">
+    <form class="form-inline" method="post" action="{{ url_for('similar') }}">
+
+        <input type="text" class="similar_name" name="similar_name" id="similarinput" placeholder={{similar_name}}
+               style="width:230px;height:30px;border-radius:50px;">
+        <button type="submit" onClick="compute()" class="btn btn-default"
+                style="width:100px;height:40px;background-color: #585555;color:#e8e6b9;">检索
+        </button>
+        </p>
+
+l
+    </form>
+</div>
+
+<div class="box0" style="margin-left: 330px">
+    <p class="pname">&nbsp;&nbsp;&nbsp;相似电影推荐</p>
+
+    <ul class="box">
+        {% for answer in data %}
+        <li style="padding:30px  10px 50px;">
+            <div class="pic">
+                <img data-src={{answer[9]}} src={{answer[19]}} alt="数据超时"
+                     style="display: block;width:150px;height:222px;overflow:hidden;">
+                <a class="aPlayBtn" target="_blank" href={{answer[12]}} data-ajax83="ys_dy_index_vip_1"></a>
+            </div>
+            <div class="box_bot_title" style="color:#e8e6b9;height:50px;width:152px;position:absolute;">
+                <p class="name_movie" style="text-align:center;padding:10px;">
+                    {{answer[2]}} &nbsp
+                    <a target="_blank" class="movie_name" href={{answer[11]}} data-ajax83="ys_dy_index_vip_1">{{answer[0]}}</a>
+                </p></div>
+        </li>
+        {% endfor %}
+            <p  style="  font-size:20px; color:white;text-align:center" >{{data_info}}</p>
+    </ul>
+</div>
+
+<!--==============================
+              footer
+=================================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="grid_12">
+                <h2>电影推荐系统</h2>
+                <div class="footer_phone"></div>
+                <a href="" class="footer_mail">info@mr.tang.org</a>
+                <div class="sub-copy"><a href="../../../../Index.html" target="_blank" title="仿站模板网">数据Data</a> -
+                    Collect from <a href="https://movie.douban.com/annual/2019?source=navigation">豆瓣</a></div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<a href="" id="toTop" class="fa fa-chevron-up"></a>
+</body>
+</html>
+

@@ -1,0 +1,12 @@
+<ul class="box">
+    {% for answer in data %}
+    <li style="padding:30px  10px 50px;">
+        <div class="pic">
+            <img data-src={{answer[9]}} src={{answer[9]}} alt="数据超时" style="display: block;width:150px;height:222px;overflow:hidden;">
+            <a class="aPlayBtn" target="_blank" href={{answer[12]}} data-ajax83="ys_dy_index_vip_1"></a>
+        </div>
+<div class="box_bot_title" style="color:#e8e6b9;height:50px;width:152px;position:absolute;">
+                    <p class="name_movie" style="text-align:center;padding:10px;">
+                {{answer[1]}}  &nbsp
+                        <a target="_blank" class="movie_name" href={{answer[11]}} data-ajax83="ys_dy_index_vip_1">{{answer[0]}}</a></p></div>
+    </li> {% endfor %}</ul>
